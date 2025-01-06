@@ -7,7 +7,6 @@ from slowapi.errors import RateLimitExceeded
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
 
-from app.core.config import settings
 from app.core.container import Container
 from app.interface.api.actuator.endpoints import router as actuator_router
 
@@ -15,30 +14,28 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
-def create_app(environment: str = "development"):
-    app = FastAPI(
-        title=settings.APP_NAME,
-        version="0.1.0",
+def create_app():
+    application = FastAPI(
+        title="{{ cookiecutter.project_name }}",
+        version="{{ cookiecutter.version }}",
         dependencies=[],
     )
-    app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
-    setup_exception_handlers(app)
-    setup_dependency_injection(app)
-    setup_middlewares(app)
-    setup_routers(app)
-    if environment != "testing":
-        app.add_event_handler("startup", startup)
-        app.add_event_handler("shutdown", shutdown)
 
-    return app
+    setup_exception_handlers(application)
+    setup_dependency_injection(application)
+    setup_middlewares(application)
+    setup_routers(application)
+
+    return application
 
 
-def setup_routers(app: FastAPI):
-    app.include_router(actuator_router, prefix="/actuator", tags=["actuator"])
+def setup_routers(application: FastAPI):
+    application.include_router(actuator_router, prefix="/actuator", tags=["actuator"])
 
 
-def setup_exception_handlers(app: FastAPI):
-    @app.exception_handler(HTTPException)
+def setup_exception_handlers(application: FastAPI):
+    application.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+    @application.exception_handler(HTTPException)
     async def http_exception_handler(request: Request, exc: HTTPException):
         match = re.match(r"^(\d+):", exc.detail)
         if match:
@@ -54,14 +51,19 @@ def setup_exception_handlers(app: FastAPI):
         )
 
 
-def setup_dependency_injection(app: FastAPI):
+def setup_database(container: Container):
+    db = container.db()
+    db.create_database()
+
+
+def setup_dependency_injection(application: FastAPI):
     container = Container()
-    container.wire(modules=[])
-    app.container = container
+    setup_database(container)
+    application.container = container
 
 
-def setup_middlewares(app: FastAPI):
-    app.add_middleware(
+def setup_middlewares(application: FastAPI):
+    application.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
         allow_credentials=True,
@@ -69,15 +71,4 @@ def setup_middlewares(app: FastAPI):
         allow_headers=["*"],
     )
 
-
-def startup():
-    logger.info("Application startup")
-
-
-def shutdown():
-    logger.info("Application shutdown")
-
-
 app = create_app()
-
-logger.info(f"{settings.APP_NAME} startup complete")
