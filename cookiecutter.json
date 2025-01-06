@@ -1,6 +1,8 @@
 {
   "authors": "Your Name or Your Team",
   "base_image": "python:3.11-slim",
+  "cache_hostname": "localhost",
+  "cache_port": "6379",
   "database_hostname": "localhost",
   "database_name": "your_database_name",
   "database_password": "postgres",

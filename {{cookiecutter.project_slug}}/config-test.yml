@@ -1,2 +1,4 @@
+cache:
+  url: "redis://localhost:16379/0"
 db:
   url: "sqlite:///./{{ cookiecutter.database_name }}.db"

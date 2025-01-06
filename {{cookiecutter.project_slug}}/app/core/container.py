@@ -3,6 +3,7 @@ from dependency_injector import containers, providers
 
 from app.application.services.user import UserService
 from app.domain.repositories.user import UserRepository
+from app.infrastructure.cache.redis import RedisClient
 from app.infrastructure.database.config import Database
 from app.core.logging import logger
 
@@ -23,6 +24,8 @@ class Container(containers.DeclarativeContainer):
     config = providers.Configuration(yaml_files=[config_file])
 
     db = providers.Singleton(Database, db_url=config.db.url)
+
+    redis_client = providers.Singleton(RedisClient, redis_url=config.cache.url)
 
     user_repository = providers.Factory(
         UserRepository,

@@ -13,6 +13,20 @@ services:
     depends_on:
       postgres-setup:
         condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+
+  redis:
+    image: redis:alpine
+    networks:
+      - {{cookiecutter.network_name}}
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   postgres:
     image: pgvector/pgvector:pg16
@@ -73,8 +87,6 @@ services:
 #      - {{cookiecutter.network_name}}
 #    ports:
 #      - 5601:5601
-#    expose:
-#      - "5601"
 #    environment:
 #      - 'OPENSEARCH_HOSTS=["http://opensearch:9200"]'
 #      - "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true"
