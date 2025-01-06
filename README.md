@@ -59,23 +59,29 @@ Follow the prompts to fill in the project details.
 - `sonar_url`: The URL for SonarQube (default: http://your_sonar_url)
 - `version`: The version of your project (default: 0.1.0)
 
+---
+
+## Contact
+
+For questions or feedback, please contact the author via LinkedIn: [Bruno Sant'Anna](https://www.linkedin.com/in/brnsantanna/)
+
+---
+
 ## Acknowledgements
 
+- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - [Cookiecutter](https://www.cookiecutter.io/)
+- [Python Dependency Injector](https://python-dependency-injector.ets-labs.org/)
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [PostgreSQL](https://www.postgresql.org/)
-- [Python Dependency Injector](https://python-dependency-injector.ets-labs.org/)
+- [Alembic](https://alembic.sqlalchemy.org/en/latest/)
 - [Redis](https://redis.io/)
 - [Pytest](https://docs.pytest.org/en/stable/)
 - [Testcontainers](https://testcontainers.org/)
 - [Docker](https://www.docker.com/)
-- [Alembic](https://alembic.sqlalchemy.org/en/latest/)
 - [Pre-commit](https://pre-commit.com/)
-- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
-## Support
-
-If you find this project useful, please consider giving it a star on GitHub!
+---
 
 ## License
 
