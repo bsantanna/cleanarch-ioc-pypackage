@@ -18,14 +18,6 @@ Dependency injection (DI) is a design pattern used to implement Inversion of Con
 
 This project is based on the example from [python-dependency-injector](https://python-dependency-injector.ets-labs.org/examples/fastapi-sqlalchemy.html) and contains a simple user entity with endpoints to manipulate user entity.
 
-## Features
-
-- **clean Architecture with FastAPI**: Ensures a clean separation between the core logic and external dependencies.
-- **PostgreSQL Integration**: Prototype classes for relational database operations.
-- **Docker Support**: Easily containerize your application.
-- **Environment Configuration**: Manage different environments using configuration files.
-- **Unit Testing**: Pre-configured unit tests to ensure code quality.
-
 ## Usage
 
 ### Prerequisites
@@ -51,7 +43,7 @@ conda install cookiecutter
 Initialize project using cookiecutter CLI:
 
 ```bash
-cookiecutter gh:bsantanna/clean-ioc-pypackage
+cookiecutter gh:bsantanna/cleanarch-ioc-pypackage
 ```
 
 Replace the prompts with proper values.
