@@ -1,3 +1,4 @@
+import logging
 import os
 from dependency_injector import containers, providers
 
@@ -5,15 +6,23 @@ from app.application.services.user import UserService
 from app.domain.repositories.user import UserRepository
 from app.infrastructure.database.config import Database
 
+
+logger = logging.getLogger(__name__)
 class Container(containers.DeclarativeContainer):
 
     wiring_config = containers.WiringConfiguration(modules=[
         "app.interface.api.users.endpoints"
     ])
 
-    config = providers.Configuration(yaml_files=[
-        "config-test.yml" if os.getenv("TESTING") else "config.yml"
-    ])
+    config_file = (
+        "config-docker.yml" if os.getenv("DOCKER")
+        else "config-test.yml" if os.getenv("TESTING")
+        else "config.yml"
+    )
+
+    logger.info(f"Using configuration file: {config_file}")
+
+    config = providers.Configuration(yaml_files=[config_file])
 
     db = providers.Singleton(Database, db_url=config.db.url)
 

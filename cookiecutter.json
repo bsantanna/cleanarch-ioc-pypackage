@@ -1,7 +1,11 @@
 {
   "authors": "Your Name or Your Team",
   "base_image": "python:3.11-slim",
+  "database_hostname": "localhost",
   "database_name": "your_database_name",
+  "database_password": "postgres",
+  "database_port": "5432",
+  "database_username": "postgres",
   "distribution_list_email": "your_email@example.com",
   "network_container_port": "8000",
   "network_mapped_port": "18000",

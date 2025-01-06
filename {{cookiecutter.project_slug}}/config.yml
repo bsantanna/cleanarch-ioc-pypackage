@@ -1,2 +1,2 @@
 db:
-  url: "postgresql://postgres:postgres@postgres:5432/{{ cookiecutter.database_name }}"
+  url: "postgresql://{{ cookiecutter.database_username }}:{{ cookiecutter.database_password }}@{{ cookiecutter.database_hostname }}:{{ cookiecutter.database_port }}/{{ cookiecutter.database_name }}"
