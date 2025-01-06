@@ -4,7 +4,7 @@
   "cache_image": "redis:alpine",
   "cache_hostname": "localhost",
   "cache_port": "6379",
-  "database_image": "postgres:16-alpine",
+  "database_image": "postgres:16",
   "database_hostname": "localhost",
   "database_name": "your_database_name",
   "database_password": "postgres",
