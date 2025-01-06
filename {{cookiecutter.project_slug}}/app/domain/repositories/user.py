@@ -2,8 +2,8 @@ from contextlib import AbstractContextManager
 from typing import Callable, Iterator
 from sqlalchemy.orm import Session
 
+from app.domain.exceptions.base import NotFoundError
 from app.domain.models import User
-from app.core.exceptions.base import NotFoundError
 
 class UserRepository:
 

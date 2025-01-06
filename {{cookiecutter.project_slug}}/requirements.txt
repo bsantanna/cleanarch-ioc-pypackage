@@ -10,6 +10,7 @@ pytest-cov
 pyyaml
 requests
 ruff
+slowapi
 sqlalchemy
 starlette
 testcontainers
