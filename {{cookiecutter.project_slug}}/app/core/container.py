@@ -1,16 +1,21 @@
 from dependency_injector import containers, providers
-from fastapi import Request
 
-from app.core.config import settings
-from app.infrastructure.cache.redis import RedisClient
-from sqlalchemy.orm import Session
+from app.application.services.user import UserService
+from app.domain.repositories.user import UserRepository
+from app.infrastructure.database.config import Database
 
-
-def get_request_id(request: Request):
-    return request.headers.get("X-Request-ID", None)
-
-# Container
 class Container(containers.DeclarativeContainer):
-    config = providers.Configuration()
-    db = providers.Dependency(instance_of=Session)
-    redis_client = providers.Singleton(RedisClient, redis_url=settings.REDIS_URL)
+    config = providers.Configuration(yaml_files=["config.yml"])
+
+    db = providers.Singleton(Database, db_url=config.db.url)
+
+    user_repository = providers.Factory(
+        UserRepository,
+        session_factory=db.provided.session
+    )
+
+    user_service = providers.Factory(
+        UserService,
+        user_repository=user_repository,
+    )
+
