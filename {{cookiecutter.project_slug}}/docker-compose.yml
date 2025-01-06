@@ -3,11 +3,11 @@ services:
   app:
     build: .
     networks:
-      - {{cookiecutter.network_name}}
+      - {{ cookiecutter.network_name }}
     volumes:
       - .:/app
     ports:
-      - "{{cookiecutter.network_mapped_port}}:{{cookiecutter.network_container_port}}"
+      - "{{ cookiecutter.network_mapped_port }}:{{ cookiecutter.network_container_port }}"
     environment:
       DOCKER: 1
     depends_on:
@@ -17,9 +17,9 @@ services:
         condition: service_healthy
 
   redis:
-    image: redis:alpine
+    image: {{ cookiecutter.cache_image }}
     networks:
-      - {{cookiecutter.network_name}}
+      - {{ cookiecutter.network_name }}
     ports:
       - "6379:6379"
     healthcheck:
@@ -29,11 +29,11 @@ services:
       retries: 3
 
   postgres:
-    image: pgvector/pgvector:pg16
+    image: {{ cookiecutter.database_image }}
     ports:
       - "5432:5432"
     networks:
-      - {{cookiecutter.network_name}}
+      - {{ cookiecutter.network_name }}
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -44,9 +44,9 @@ services:
       retries: 5
 
   postgres-setup:
-    image: pgvector/pgvector:pg16
+    image: {{ cookiecutter.database_image }}
     networks:
-      - {{cookiecutter.network_name}}
+      - {{ cookiecutter.network_name }}
     environment:
       PGPASSWORD: postgres
     command: >
@@ -60,7 +60,7 @@ services:
 #  opensearch:
 #    image: opensearchproject/opensearch:latest
 #    networks:
-#      - {{cookiecutter.network_name}}
+#      - {{ cookiecutter.network_name }}
 #    ports:
 #      - "9200:9200"
 #      - "9600:9600"
@@ -84,7 +84,7 @@ services:
 #  opensearch-dashboards:
 #    image: opensearchproject/opensearch-dashboards:latest
 #    networks:
-#      - {{cookiecutter.network_name}}
+#      - {{ cookiecutter.network_name }}
 #    ports:
 #      - 5601:5601
 #    environment:
