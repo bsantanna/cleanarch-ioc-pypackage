@@ -5,6 +5,11 @@ from app.domain.repositories.user import UserRepository
 from app.infrastructure.database.config import Database
 
 class Container(containers.DeclarativeContainer):
+
+    wiring_config = containers.WiringConfiguration(modules=[
+        "app.interface.api.users.endpoints"
+    ])
+
     config = providers.Configuration(yaml_files=["config.yml"])
 
     db = providers.Singleton(Database, db_url=config.db.url)
