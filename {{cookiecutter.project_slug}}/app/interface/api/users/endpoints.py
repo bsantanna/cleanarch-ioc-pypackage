@@ -50,7 +50,3 @@ def remove(
     else:
         return Response(status_code=status.HTTP_204_NO_CONTENT)
 
-
-@router.get("/status")
-def get_status():
-    return {"status": "OK"}
