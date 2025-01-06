@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "{{cookiecutter.project_slug}}"
+version = "{{cookiecutter.version}}"
+description = "{{cookiecutter.project_description}}"
+authors = ["{{cookiecutter.authors}} <{{cookiecutter.distribution_list_email}}>"]
+
+[tool.poetry.dependencies]
+python = "^{{cookiecutter.python_version}}"
+
+[tool.poetry.group.dev.dependencies]
+import-linter = "^2.1"
+
+[tool.importlinter]
+root_package = "app"
+include_external_packages = true
+
+[[tool.importlinter.contracts]]
+name = "forbid_sqlalchemy_in_domain"
+type = "forbidden"
+source_modules = [
+    "app.domain"
+]
+forbidden_modules = [
+    "sqlalchemy",
+    "requests",
+    "pydantic"
+]
+
+[[tool.importlinter.contracts]]
+name = "forbid_infrastructure_in_domain"
+type = "forbidden"
+source_modules = [
+    "app.domain"
+]
+forbidden_modules = [
+    "app.infrastructure"
+]
+
+[[tool.importlinter.contracts]]
+name = "forbid_infrastructure_in_application"
+type = "forbidden"
+source_modules = [
+    "app.application"
+]
+forbidden_modules = [
+    "app.infrastructure"
+]
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.core.masonry.api"
