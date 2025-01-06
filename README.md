@@ -46,7 +46,32 @@ Initialize project using cookiecutter CLI:
 cookiecutter gh:bsantanna/cleanarch-ioc-pypackage
 ```
 
-Replace the prompts with proper values.
+Follow the prompts to fill in the project details.
+
+#### Initialization inputs
+
+- `authors`: Your Name or Your Team
+- `distribution_list_email`: Your email address
+- `python_version`: The version of Python to use (default: 3.11)
+- `base_image`: The base Docker image for Python (default: python:3.11-slim)
+- `cache_image`: The Docker image for the cache service (default: redis:alpine)
+- `cache_hostname`: The hostname for the cache service (default: localhost)
+- `cache_port`: The port number for the cache service (default: 6379)
+- `database_image`: The Docker image for the database service (default: postgres:16)
+- `database_hostname`: The hostname for the database service (default: localhost)
+- `database_name`: The name of the database (default: your_database_name)
+- `database_password`: The password for the database (default: postgres)
+- `database_port`: The port number for the database service (default: 5432)
+- `database_username`: The username for the database (default: postgres)
+- `network_container_port`: The port number exposed by the container (default: 8000)
+- `network_mapped_port`: The port number mapped to the host (default: 18000)
+- `network_name`: The name of the Docker network (default: your_network_name)
+- `project_name`: The name of your project (default: Your Project Name)
+- `project_slug`: A URL-friendly version of the project name (default: automatically generated from `project_name`)
+- `project_description`: A brief description of your project (default: A brief description of your project)
+- `sonar_token`: The token for SonarQube (default: your_sonar_token)
+- `sonar_url`: The URL for SonarQube (default: http://your_sonar_url)
+- `version`: The version of your project (default: 0.1.0)
 
 ## License
 
