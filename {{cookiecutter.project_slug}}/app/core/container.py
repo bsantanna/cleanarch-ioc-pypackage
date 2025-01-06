@@ -1,13 +1,11 @@
-import logging
 import os
 from dependency_injector import containers, providers
 
 from app.application.services.user import UserService
 from app.domain.repositories.user import UserRepository
 from app.infrastructure.database.config import Database
+from app.core.logging import logger
 
-
-logger = logging.getLogger(__name__)
 class Container(containers.DeclarativeContainer):
 
     wiring_config = containers.WiringConfiguration(modules=[
