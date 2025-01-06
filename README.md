@@ -14,6 +14,8 @@ Table of Contents
 
 ---
 
+## Overview
+
 This project implements a clean architecture scaffolding with prototype classes for the following tech stack:
 
 - FastAPI for RESTful API
