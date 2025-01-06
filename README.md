@@ -22,23 +22,9 @@ This project is based on the example from [python-dependency-injector](https://p
 
 ### Prerequisites
 
-- [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 - [Cookiecutter](https://www.cookiecutter.io/)
 
-### Initialize conda environment
-
-```bash
-conda create -n dev python=3.11
-```
-
 ### Initialize project
-
-Setup Cookiecutter:
-
-```bash
-conda activate dev
-conda install cookiecutter
-```
 
 Initialize project using cookiecutter CLI:
 
@@ -73,10 +59,6 @@ Follow the prompts to fill in the project details.
 - `sonar_url`: The URL for SonarQube (default: http://your_sonar_url)
 - `version`: The version of your project (default: 0.1.0)
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgements
 
 - [Cookiecutter](https://www.cookiecutter.io/)
@@ -95,3 +77,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you find this project useful, please consider giving it a star on GitHub!
 
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
