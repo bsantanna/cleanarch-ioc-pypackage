@@ -1,5 +1,7 @@
 {
   "authors": "Your Name or Your Team",
+  "distribution_list_email": "your_email@example.com",
+  "python_version": "3.11",
   "base_image": "python:3.11-slim",
   "cache_image": "redis:alpine",
   "cache_hostname": "localhost",
@@ -10,14 +12,12 @@
   "database_password": "postgres",
   "database_port": "5432",
   "database_username": "postgres",
-  "distribution_list_email": "your_email@example.com",
   "network_container_port": "8000",
   "network_mapped_port": "18000",
   "network_name": "your_network_name",
   "project_name": "Your Project Name",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
   "project_description": "A brief description of your project",
-  "python_version": "3.11",
   "sonar_token": "your_sonar_token",
   "sonar_url": "http://your_sonar_url",
   "version": "0.1.0"
