@@ -172,3 +172,6 @@ opensearch-data
 
 # Sonar
 .scannerwork
+
+# SQLite database
+*.db

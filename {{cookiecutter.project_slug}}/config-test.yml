@@ -1,0 +1,2 @@
+db:
+  url: "sqlite:///./{{ cookiecutter.database_name }}.db"

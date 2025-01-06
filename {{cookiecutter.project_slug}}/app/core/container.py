@@ -1,3 +1,4 @@
+import os
 from dependency_injector import containers, providers
 
 from app.application.services.user import UserService
@@ -10,7 +11,9 @@ class Container(containers.DeclarativeContainer):
         "app.interface.api.users.endpoints"
     ])
 
-    config = providers.Configuration(yaml_files=["config.yml"])
+    config = providers.Configuration(yaml_files=[
+        "config-test.yml" if os.getenv("TESTING") else "config.yml"
+    ])
 
     db = providers.Singleton(Database, db_url=config.db.url)
 
@@ -23,4 +26,3 @@ class Container(containers.DeclarativeContainer):
         UserService,
         user_repository=user_repository,
     )
-
