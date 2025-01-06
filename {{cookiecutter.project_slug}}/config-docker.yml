@@ -1,4 +1,4 @@
 cache:
   url: "redis://redis:6379/0"
 db:
-  url: "postgresql://postgres:postgres@postgres:5432/{{ cookiecutter.database_name }}"
+  url: "postgresql://{{ cookiecutter.database_username }}:{{ cookiecutter.database_password }}@postgres:5432/{{ cookiecutter.database_name }}"

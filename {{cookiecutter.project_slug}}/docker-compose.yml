@@ -21,7 +21,7 @@ services:
     networks:
       - {{ cookiecutter.network_name }}
     ports:
-      - "6379:6379"
+      - "{{ cookiecutter.cache_port }}:6379"
     healthcheck:
       test: [ "CMD", "redis-cli", "ping" ]
       interval: 10s
@@ -31,14 +31,14 @@ services:
   postgres:
     image: {{ cookiecutter.database_image }}
     ports:
-      - "5432:5432"
+      - "{{ cookiecutter.database_port }}:5432"
     networks:
       - {{ cookiecutter.network_name }}
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: {{ cookiecutter.database_username }}
+      POSTGRES_PASSWORD: {{ cookiecutter.database_password }}
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      test: [ "CMD-SHELL", "pg_isready -U {{ cookiecutter.database_username }}" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -48,10 +48,10 @@ services:
     networks:
       - {{ cookiecutter.network_name }}
     environment:
-      PGPASSWORD: postgres
+      PGPASSWORD: {{ cookiecutter.database_password }}
     command: >
       bash -c '
-        echo "CREATE DATABASE {{cookiecutter.database_name}};" | psql -h postgres -U postgres
+        echo "CREATE DATABASE {{cookiecutter.database_name}};" | psql -h postgres -U {{ cookiecutter.database_username }}
       '
     depends_on:
       postgres:
