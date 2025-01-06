@@ -2,9 +2,6 @@
 
 {{cookiecutter.project_description}}
 
-
-
-
 ---
 
 ## 🚀 Prerequisites
@@ -38,13 +35,9 @@ pip install -r requirements.txt
 pre-commit install
 ```
 
-### Configure environment variables
+### Configure environment
 
-Create a `.env` file in the project root:
-
-```bash
-cp .env.example .env
-```
+...
 
 ## Initialize the database
 
@@ -88,22 +81,7 @@ Access the interactive documentation (OpenAPI):
 ## 📂 Project Structure
 
 ```plaintext
-faastapi_core/
-├── alembic/                 # Migration management
-├── app/
-│   ├── api/                 # API routes
-│   ├── core/                # Main configurations (config.py, security, etc.)
-│   ├── models/              # Database models
-│   ├── repositories/        # Repositories for database access
-│   ├── schemas/             # Pydantic validation schemas
-│   ├── services/            # Business logic
-│   └── utils/               # Helper functions
-├── tests/                   # Automated tests
-├── .env                     # Environment variables
-├── docker-compose.yml       # Docker orchestration
-├── Dockerfile               # Docker configuration
-├── main.py                  # Application entry point
-└── requirements.txt         # Project dependencies
+...
 ```
 
 ---
