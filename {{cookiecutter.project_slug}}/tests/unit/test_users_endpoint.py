@@ -58,7 +58,7 @@ def test_get_by_id_404(client):
     assert response.status_code == 404
 
 
-@mock.patch("webapp.services.uuid4", return_value="xyz")
+@mock.patch("app.application.services.user.uuid4", return_value="xyz")
 def test_add(_, client):
     repository_mock = mock.Mock(spec=UserRepository)
     repository_mock.add.return_value = User(
@@ -69,7 +69,7 @@ def test_add(_, client):
     )
 
     with app.container.user_repository.override(repository_mock):
-        response = client.post("/create")
+        response = client.post("/users/create")
 
     assert response.status_code == 201
     data = response.json()
@@ -81,7 +81,7 @@ def test_remove(client):
     repository_mock = mock.Mock(spec=UserRepository)
 
     with app.container.user_repository.override(repository_mock):
-        response = client.delete("/delete/1")
+        response = client.delete("/users/delete/1")
 
     assert response.status_code == 204
     repository_mock.delete_by_id.assert_called_once_with(1)
@@ -92,7 +92,7 @@ def test_remove_404(client):
     repository_mock.delete_by_id.side_effect = UserNotFoundError(1)
 
     with app.container.user_repository.override(repository_mock):
-        response = client.delete("/users/1")
+        response = client.delete("/users/delete/1")
 
     assert response.status_code == 404
 
