@@ -1,7 +1,6 @@
 # Clean Architecture IoC Project Base
 
-Table of Contents
-=================
+## Table of Contents
 
    * [Overview](#overview)
    * [Usage](#usage)
