@@ -5,8 +5,7 @@ from typing import Callable
 import logging
 
 from sqlalchemy import create_engine, orm
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, declarative_base
 
 logger = logging.getLogger(__name__)
 
