@@ -1,5 +1,19 @@
 # Clean Architecture IoC Project Base
 
+Table of Contents
+=================
+
+   * [Overview](#overview)
+   * [Usage](#usage)
+      * [Prerequisites](#prerequisites)
+      * [Initialize project](#initialize-project)
+         * [Initialization inputs](#initialization-inputs)
+   * [Contact](#contact)
+   * [Acknowledgements](#acknowledgements)
+   * [License](#license)
+
+---
+
 This project implements a clean architecture scaffolding with prototype classes for the following tech stack:
 
 - FastAPI for RESTful API
@@ -17,6 +31,8 @@ Clean Architecture is a software design pattern that emphasizes the separation o
 Dependency injection (DI) is a design pattern used to implement Inversion of Control (IoC) in software development, which helps to decouple the creation of object dependencies from their usage. By injecting dependencies into a class rather than having the class create them itself, DI promotes loose coupling and enhances code modularity. This separation of concerns makes the codebase more maintainable and testable, as it allows for easier swapping of implementations and facilitates unit testing by enabling the use of mock objects.
 
 This project is based on the example from [python-dependency-injector](https://python-dependency-injector.ets-labs.org/examples/fastapi-sqlalchemy.html) and contains a simple user entity with endpoints to manipulate user entity.
+
+---
 
 ## Usage
 
