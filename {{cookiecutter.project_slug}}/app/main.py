@@ -9,7 +9,7 @@ from starlette.responses import JSONResponse
 
 from app.core.container import Container
 from app.interface.api.actuator.endpoints import router as actuator_router
-from app.interface.api.user.endpoints import router as user_router
+from app.interface.api.users.endpoints import router as user_router
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
