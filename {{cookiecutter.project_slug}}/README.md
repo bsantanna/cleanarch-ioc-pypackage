@@ -20,7 +20,7 @@ After building the images, run the following command to start the application:
 docker compose up
 ```
 
-Access the API at: [http://127.0.0.1:{{cookiecutter.network_container_port}}](http://127.0.0.1:{{cookiecutter.network_container_port}})
+Access the API at: [http://127.0.0.1:{{cookiecutter.network_mapped_port}}](http://127.0.0.1:{{cookiecutter.network_container_port}})
 
 ---
 
@@ -68,10 +68,6 @@ pre-commit install
 ```bash
 uvicorn app.main:app --reload
 ```
-
----
-
-## 📚 API Documentation
 
 Access the interactive documentation (OpenAPI):
 
